@@ -1,0 +1,41 @@
+# mybatis配置
+mybatis:
+  type-aliases-package: com.farbun.basic.*.entity
+  config-location: classpath:/mybatis.cfg.xml
+  mapper-locations: classpath:/com/farbun/basic/*/mapper/*Mapper.xml
+
+#spring 配置
+spring:
+  datasource:
+    druid:
+     # 数据库连接配置
+     url: jdbc:mysql://192.168.2.128:3306/fb_web_design?useUnicode=true&characterEncoding=utf-8&useSSL=true
+     username: root
+     password: V7ZzT1XZ02XO+1wBvJQ688A4wlnrdGIDr+hCCawDE9SeriWH1qO1lxWqPDKcjSJGzxwk+wUcMIJE8CScOk/a6w==
+     driver-class-name: com.mysql.jdbc.Driver
+     # 连接池配置
+     initial-size: 5
+     max-active: 20
+     min-idle: 5
+     max-wait: 60000
+     time-between-eviction-runs-millis: 60000
+     min-evictable-idle-time-millis: 30000
+     # 打开PSCache
+     pool-prepared-statements: true
+     max-pool-prepared-statement-per-connection-size: 20
+     filters: stat,log4j,wall,config
+     # 数据库连接配置(加密)
+     connectionProperties: 'druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000;config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJkFxHJ3WpZMV3jgXUkYucQuwxBEtysL5T3FChY/teKvitU+ySuXfiDqX25nPYkIqCYfWyB/njeIUi6IXk/0690CAwEAAQ=='
+     # WebStatFilter配置
+     exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+     # StatViewServlet配置
+     stat-view-servlet.loginUsername: farbun
+     stat-view-servlet.loginPassword: farbun
+
+logging:
+  level: debug
+  config: classpath:logback-spring.xml
+  file: ./log/logs.log
+
+
+
